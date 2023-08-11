@@ -6,9 +6,74 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        9
-    </div>
-    <script src="index.js"></script>
+    <p class="js-question">What is the capital of Lagos State?</p>
+    <input class="js-input" type="text">
+    <button class="js-input-button" onclick="stateAndCapital()">submit</button>
+
+    <script>
+
+        const inputEl = document.querySelector('.js-input');
+        //console.log(inputEl)
+
+        const pEl = document.querySelector('.js-question')
+
+
+        function stateAndCapital () {
+            const question = randomQuestion();
+            
+            userAnswer = inputEl.value;
+            
+            if (userAnswer === 'Ikeja' || userAnswer === 'ikeja') {
+                if (question === 'Lagos') {
+                    console.log('correct');
+                   
+                } else {
+                    console.log('incorrect answer, try again!');
+                    
+                } 
+            } else if (userAnswer === 'Kano' || userAnswer === 'kano') {
+                if (question === 'Kano') {
+                    console.log('correct');
+                    
+                } else {
+                    console.log('incorrect answer, try again!');
+                    
+                } 
+            } else if (userAnswer === 'fct' || userAnswer === 'fct') {
+                if (question === 'Abuja') {
+                    console.log('correct');
+                    
+                } else {
+                    console.log('incorrect answer, try again!');
+                     
+                }
+            }
+
+            inputEl.value = '';
+
+        }
+
+        function randomQuestion() {
+            const randomNumber = Math.random();
+            let question = '';
+
+            if (randomNumber >= 0 && randomNumber < 1/2) {
+                question = 'Lagos';
+            } else if (randomNumber >= 1/2 && randomNumber < 2/3) {
+                question = 'Abuja';
+            } else if (randomNumber >= 2/3 && randomNumber < 1) {
+                question = 'Kano';
+            }
+
+            pEl.innerHTML = `What is the capital of ${question} State?` 
+
+            return question;
+           
+        }
+        
+        
+        
+    </script>
+
 </body>
 </html>

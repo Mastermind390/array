@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        button {
+            background-color: rgb(192, 192, 192);
+            border: none;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: .5s;
+        }
+
+        button:hover {
+            background-color: rgb(42, 43, 42);
+            color: white;
+        }
+
+        .is-toggled {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <button id="js-button" onclick="changeText()">Autoplay</button>
+
+    <p>
+        <button id="js-button-toggle" onclick="ToggleBtn('js-button-toggle')">Food</button>
+        <button id="js-button-toggle1" onclick="ToggleBtn('js-button-toggle1')">Tech</button>
+    </p>
+    
+
+    <script>
+        const btnEl = document.getElementById('js-button');
+
+        const btnEl1 = document.getElementById('js-button-toggle')
+
+
+
+        function changeText() {
+            if (btnEl.innerHTML === 'Autoplay') {
+                btnEl.innerHTML = 'Stop';
+            } else if (btnEl.innerHTML ==='Stop') {
+                btnEl.innerHTML = 'Autoplay'
+            }
+        }
+
+        function ToggleBtn() {
+            if (btnEl1.classList.contains('is-toggled')) {
+                btnEl1.classList.remove('is-toggled')
+            } else {
+                btnEl1.classList.add('is-toggled');
+            }
+        }
+
+        function ToggleBtn(value) {
+            const btnEl2 = document.getElementById(value)
+
+            if (!btnEl2.classList.contains('is-toggled')) {
+
+                tunoffPreviousButn();
+
+                btnEl2.classList.add('is-toggled')
+            } else {
+                btnEl2.classList.remove('is-toggled');
+            }
+
+           // tunoffPreviousButn();
+        }
+
+        function tunoffPreviousButn() {
+            const previousButton = document.querySelector('.is-toggled');
+            if(previousButton) {
+                previousButton.classList.remove('is-toggled');
+            } 
+        }
+        
+    </script>
+</body>
+</html>

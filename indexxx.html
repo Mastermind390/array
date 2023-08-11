@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App</title>
+</head>
+<body>
+    
+    <button id="js-button" onclick="changeText()">Start</button>
+
+    <button id="js-button1" onclick="changeText1()">Start</button>
+
+    <button id="js-add-to-cart-button" onclick="changeText2()">Add to Cart</button>
+    <p id="js-display-text"></p>
+
+    <button id="js-add-button" onclick="num++">Add</button>
+    <button id="js-remove-button" onclick="num--;">remove</button>
+
+    <script>
+
+        const add = function() {
+            console.log(2+3);
+        }
+        add()
+        add()
+
+        const runTwice = function(fun) {
+            fun();
+            fun();
+        }
+
+        runTwice(function(){
+            console.log('12b')
+        })
+
+        runTwice(add)
+
+        function changeText() {
+            const changeTextBtn = document.getElementById('js-button');
+
+            setTimeout(function() {
+                changeTextBtn.innerHTML = 'Finished';
+            }, 1000)
+        }
+
+        function changeText1() {
+            const changeTextBtn = document.getElementById('js-button1');
+
+            changeTextBtn.innerHTML = 'Loading...';
+
+            setTimeout(function() {
+                changeTextBtn.innerHTML = 'Finished';
+            }, 1000)
+        }
+
+        let timeOutId;
+
+        function changeText2() {
+            const changeTextBtn = document.getElementById('js-add-to-cart-button');
+            const pEl = document.getElementById('js-display-text')
+
+            pEl.innerHTML = 'Added';
+
+            clearTimeout(timeOutId);
+
+            timeOutId = setTimeout(function() {
+                pEl.innerHTML = '';
+            }, 2000)
+           
+        }
+
+        let num = 2;
+
+
+        setInterval(function(){
+            if (document.title === 'App') {
+                document.title = `${num} New messages`;
+            } else if (document.title === `${num} New messages`) {
+                document.title = 'App';
+            }
+        }, 1000)
+
+    </script>
+
+</body>
+</html>
